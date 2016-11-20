@@ -1,0 +1,16 @@
+<div id="jobbox" style="background-color:#F0F8FF; margin-bottom: 15px;">
+  <% if a.trackable %>
+    <h5 style="background-color: #F0F8FF;">
+      <%= image_tag User.find(a.trackable.user_id).profile.avatar_url(:thumbnail) %>
+      <%= User.find(a.trackable.user_id).first_name + " " + User.find(a.trackable.user_id).last_name %></h5>
+<div id="jobtitle" style="background-color: white;">
+  <h4><%= link_to a.trackable.status, post_path(a.trackable) %></h4>
+  <br>
+
+  <% else %>
+    An article that is currently deleted was added.
+  <% end %>
+  <br>
+  Posted <%= time_ago_in_words(a.created_at) %> ago
+</div>
+</div>

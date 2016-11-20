@@ -1,0 +1,21 @@
+<% if user_signed_in? %>
+<div class="col-md-4">
+  <div class="card-wrap" style="background-color: none">
+    <div class="profile_pic-wrap">
+      <% unless current_user.profile.avatar_url.nil? %>
+      <img <%= image_tag current_user.profile.avatar_url(:card) %>
+      <% else %>
+      <img src="/assets/defaultprofile" height=150px width=150px>
+      <% end %>
+    </div>
+    <div class="info-wrap">
+      <h3 class="user-name"><%= current_user.first_name + " " + current_user.last_name%></h3>
+      <p><%= current_user.profile.occupation%></p>
+      <p><%= current_user.profile.education%></p>
+      <p><%= link_to 'Edit Profile', edit_profile_path(current_user.profile) %></p>
+    </div>
+
+  </div>
+</div>
+
+<% end %>

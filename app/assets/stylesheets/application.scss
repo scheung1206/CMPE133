@@ -1,0 +1,248 @@
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+/* Position of the body element */
+body {
+  position: relative;
+  background-color: white;
+}
+
+input {
+  display: block;
+}
+
+div.nav {
+  background:white;
+  height:75px;
+  border-width: 3px;
+  border-color: grey;
+  border-bottom: 3px solid darkgrey;
+}
+
+div.remember-me {
+  border: 3px solid blue;
+  width: 100px;
+}
+
+input#user_remember_me.boolean.optional {
+  border: 3px solid red;
+}
+
+input#user_email.form-control.string.email.optional {
+  padding-right: 10px;
+  margin-left: 0px;
+  margin-bottom: 0px;
+  border-top-width: 2px;
+  width: 194px;
+}
+
+input#user_password.form-control.password.optional {
+  margin-left: 0px;
+  width: 194px;
+}
+
+input.btn.btn-default {
+  padding-right: 10px;
+  padding-left: 10px;
+  border-right-width: 1px;
+  width: 120px;
+  color: black;
+  background-color: white;
+  border: 2px solid #555555;
+  transition-duration: 0.5s;
+}
+
+input.btn.btn-default:hover {
+  background-color: #555555;
+  color: white;
+}
+
+div.form-group.email {
+  margin: 0px;
+}
+
+div.col-sm-8 {
+  float: right;
+  margin-right: 0px;
+  width: 450px;
+}
+
+div.form-actions {
+  height: 50px;
+  width: 25%;
+}
+
+img.company.logo {
+  width: 750px;
+}
+
+h1 {
+  margin-top: 0px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+}
+
+#rcorners2 {
+    border-radius: 25px;
+    padding: 20px;
+    width: 200px;
+    height: 200px;
+}
+
+.dropbtn {
+  background-color: red;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdwn {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0px;
+  font-size: 100%;
+}
+
+#container li {
+  margin-bottom: 10px;
+  list-style-type: none;
+  z-index: 10000;
+}
+
+.dropdown-content {
+    border-style: solid;
+    border-color: red;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    width: 100px;
+    right: 0;
+}
+
+.dropdown-content a {
+    border-style: solid;
+    border-color: blue;
+    color: black;
+    padding-top: 0px;
+    margin-bottom: 10px;
+    padding-bottom: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+    text-decoration: none;
+    display: block;
+    height: 10px;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+    content: '>>';
+}
+
+body {
+  background-color: #e3e3e3;
+}
+
+/*Post text window*/
+
+div.col-md-7 {
+  border: 5px solid green;
+}
+
+/*End post text window*/
+
+/*Profile box window*/
+
+//profile
+/* go on then, styles go here.. knock yourself out! */
+//@import "compass/css3";
+
+@import url(http://fonts.googleapis.com/css?family=Raleway:100,200,300);
+//@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+
+$profile-pic-size: 100px;
+$profile-pic-size-half:-$profile-pic-size/2;
+
+html {
+  font:15px;
+  background-size:cover;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+$background-color:#e3e3e3;
+.card-wrap {
+  width:100%;
+  background:white;
+  position:relative;
+  padding:20px;
+  border-radius:5px;
+  border-top:$profile-pic-size solid #F0F8FF;
+  font-family: 'Raleway', sans-serif;
+}
+
+.profile_pic-wrap {
+  width:150px;
+  height:150px;
+  background:$background-color;
+  top:0;
+  left:50%;
+  padding:5px;
+  position:absolute;
+  margin-left: -75px;
+  top: -75px;
+  border-radius:50%;
+  overflow:hidden;
+
+  img {
+    border-radius:50%;
+    margin-left: -6px;
+    margin-top: -5px;
+  }
+}
+.user-name {
+  text-align:center;
+  margin-top:$profile-pic-size/2;
+}
+.user-title {
+  text-align:center;
+}
+.find_me-wrap {
+  margin-top:40px;
+}
+.find-me {
+  font:.7em;
+}
+.info-wrap {
+  text-align: center;
+}
+
+.icon-wrap a {
+  line-height:70px;
+  width:24%;
+  text-decoration:none;
+  padding:0;
+  font-size:2em;
+  cursor:pointer;
+  margin:0;
+  color:darken($background-color,20);
+  transition:color .1s linear;
+
+  &:hover {
+    color:darken($background-color,40);
+    }
+}
+/*End profile box window*/

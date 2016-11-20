@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WIR3D</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+<header>
+  <% if user_signed_in? %>
+  <div class="nav">
+    <!-- account button -->
+    <div class="dropdown" style="float:right">
+      <button class="dropbtn">Account</button>
+      <div id="container">
+      <div class="dropdown-content">
+        <li><a href="/">Home</a></li>
+        <li><a href="/companies">Company</a></li>
+        <li><a href="/jobs">Jobs</a></li>
+        <li><a href="/users">Profile</a></li>
+        <li><a href="/conversations">Messages</a></li>
+        <li><a href="/users/edit">Account</a></li>
+        <% if !user_signed_in? %>
+          <li><%= link_to "Sign In", new_user_session_path %></li>
+        <% else %>
+          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+        <% end %>
+      </div>
+     </div>
+   </div>
+    <% end %>
+<!-- end account button -->
+  </div>
+</header>
+
+<!-- SIDE BAR for Jobs posting -->
+<div class="jobList">
+  <div class="container">
+    <div class="row">
+
+      <!-- SIDE BAR END -->
+      <div class="post-box" align="middle">
+        <div>
+          <%=yield%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

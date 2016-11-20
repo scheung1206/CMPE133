@@ -1,0 +1,133 @@
+<head>
+<style>
+div.company {
+    width: 70%;
+    height: 225px;
+    background-color: #F0F8FF;
+    margin-left: 15%;
+}
+
+header {
+    padding: 1em;
+    color: black;
+    clear: left;
+    text-align: center;
+}
+
+nav {
+  float: left;
+  width: 100px;
+  height: 100px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+   
+nav ul a {
+    text-decoration: none;
+}
+
+article {
+    margin-left: 20%;
+    padding: 1em;
+    overflow: hidden;
+    text-align: left;
+}
+.round {
+  border-radius: 50%;
+  position:relative;
+  margin-left:10px;
+  overflow: hidden;
+  width: 100px;
+  height: 100px;
+}
+.round img {
+  display: block;
+  min-width: 100%;
+  min-height: 100%;
+}
+</style>
+</head>
+
+<div style="background-color: white;">
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Companies</h1>
+
+  <%= form_tag companies_path, :method=> 'get' do %>
+  <p>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "search", :name => nil %>
+  </p>
+  <% end %>
+  <%= link_to "Advanced Search", new_search_path %>
+
+<table style="width:100%; border-collapse: separate; border-spacing: 0px 10px">
+  <% @companies.each do |company| %>
+    <tr>
+      <td>
+        <div style="width:70%; height:225px; background-color:#F0F8FF; margin-left:15%">
+          <header style="padding:1em; color:black; clear:left; text-align:center;">
+            <h1><%= company.name %></h1>
+          </header>
+          <div>
+            <% unless company.avatar_url.nil? %>
+              <div class="round">
+                <%= image_tag(company.avatar_url(:profile), size:"100") %>
+              </div>
+              <% else %>
+              <div class="round">
+                <img src="/assets/defaultcompany">
+              </div>
+              <% end %>
+              <div>
+                <%= link_to 'Edit Profile', edit_company_path(company) %>
+              </div>
+          </div>
+          <div style="margin-left:20%; padding:1em; overflow:hidden; text-align:left;">
+            <%= company.description %>
+          </div>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<!--
+<table style="width:100%; border-collapse: separate; border-spacing: 0px 10px">
+  <thead style="font-size: 20px; border: 1px solid black">
+    <tr>
+      <th>Avatar</th>
+      <th>Name</th>
+      <th>Description</th>
+
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><% unless company.avatar_url.nil? %>
+          <%= image_tag company.avatar_url(:profile) %>
+          <% else %>
+          <img src="/assets/defaultcompany" height=100px width=100px>
+          <% end %>
+          </td>
+        <td><%= company.name %></td>
+        <td><%= company.description %></td>
+        <td><%= link_to 'Show', company %></td>
+        <td><%= link_to 'Edit', edit_company_path(company) %></td>
+        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+-->
+<br>
+<% if current_user.premium? %>
+<%= link_to 'New Company', new_company_path %>
+<% end %>
+</div>

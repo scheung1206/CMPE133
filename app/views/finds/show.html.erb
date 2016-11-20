@@ -1,0 +1,22 @@
+<h1> Search Results <h1>
+
+<p><%= link_to 'Back', new_find_path %> </p>
+
+<% if @find.find_names.empty? %>
+
+	<p> No Records Found </p>
+
+<% else %>
+
+	<% @find.find_names.each do |c| %>
+	<br>
+<a href="/profiles/<%=c.id%>">
+	<div class ="div">
+		<h2> <%= c.first_name %> </h2>
+		<h4><%= c.last_name %> </h4>
+
+	</div>
+</a>
+	<% end %>
+
+	<% end %>
