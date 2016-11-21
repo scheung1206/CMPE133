@@ -2,8 +2,8 @@
 <style>
 div.company {
     width: 70%;
-    height: 225px;
-    background-color: #F0F8FF;
+    height: 200px;
+    background-color: #d0e3ed;
     margin-left: 15%;
 }
 
@@ -24,7 +24,7 @@ nav ul {
     list-style-type: none;
     padding: 0;
 }
-   
+
 nav ul a {
     text-decoration: none;
 }
@@ -34,59 +34,121 @@ article {
     padding: 1em;
     overflow: hidden;
     text-align: left;
+
 }
+
 .round {
-  border-radius: 50%;
-  position:relative;
-  margin-left:10px;
-  overflow: hidden;
-  width: 100px;
-  height: 100px;
+   /*max-width: 200px;*/
+   /*max-height: 200px;*/
+   border-radius: 50%;
+   position: center;
+   margin-left: 40px;
+   margin-top: -75px;
 }
+
 .round img {
   display: block;
-  min-width: 100%;
-  min-height: 100%;
+  /* make a square container */
+  min-width: 200px;
+  min-height: 200px;
+  /* fill the container, preserving aspect ratio, and cropping to fit */
+  background-size: cover;
+  /* center the image vertically and horizontally */
+  background-position: center;
+  /* round the edges to a circle with border radius 1/2 container size */
+  border-radius: 50%;
+  /*border*/
+  border:1px solid gray;
 }
+
+.adv {
+  float: right;
+  margin-right:245px;
+  margin-top:15px;
+  overflow:hidden;
+}
+
+.search {
+  position: absolute;
+  float: left;
+  margin-left: 165px;
+  width: 50%;
+  overflow:hidden;
+}
+
+.bluebox {
+  margin-top:40px;
+}
+
+.description {
+  position: absolute;
+  margin-left: 120px;
+  margin-right:300px;
+  float: right;
+  margin-top:-150px;
+  font-size: 16px;
+}
+
 </style>
 </head>
 
-<div style="background-color: white;">
+<div style="background-color: clear;">
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Companies</h1>
-
+<!--
+<div class="search">
+-->
   <%= form_tag companies_path, :method=> 'get' do %>
   <p>
   <%= text_field_tag :search, params[:search] %>
-  <%= submit_tag "search", :name => nil %>
   </p>
+  <p>
+  <%= submit_tag "Search", :name => nil %>
+  </p>
+  <!-- </div> -->
   <% end %>
+
+<!--
+<div class="adv">
   <%= link_to "Advanced Search", new_search_path %>
+</div>
+-->
+
+<!--  <%= link_to new_search_path, class: "adv", id: "id" do %>
+   Advanced Search
+<% end %>
+-->
+
+<%= link_to "Advanced Search", new_search_path %>
+
+<!--<h1>Company</h1> -->
 
 <table style="width:100%; border-collapse: separate; border-spacing: 0px 10px">
   <% @companies.each do |company| %>
     <tr>
       <td>
-        <div style="width:70%; height:225px; background-color:#F0F8FF; margin-left:15%">
+        <div class="bluebox">
+        <div style="width:90%; height:250px; background-color: #d0e3ed; margin-left:5%; ">
           <header style="padding:1em; color:black; clear:left; text-align:center;">
             <h1><%= company.name %></h1>
           </header>
           <div>
             <% unless company.avatar_url.nil? %>
               <div class="round">
-                <%= image_tag(company.avatar_url(:profile), size:"100") %>
+                <%= image_tag(company.avatar_url(:profile), size:"200") %>
               </div>
               <% else %>
               <div class="round">
                 <img src="/assets/defaultcompany">
               </div>
               <% end %>
-              <div>
+              <div style="margin-left:10%;">
                 <%= link_to 'Edit Profile', edit_company_path(company) %>
               </div>
           </div>
-          <div style="margin-left:20%; padding:1em; overflow:hidden; text-align:left;">
+        </div>
+        <div class="description">
+          <div style="margin-left:25%; padding:1em; overflow:hidden; text-align:left; ">
             <%= company.description %>
           </div>
         </div>
@@ -94,6 +156,7 @@ article {
     </tr>
   <% end %>
 </table>
+</div>
 
 <!--
 <table style="width:100%; border-collapse: separate; border-spacing: 0px 10px">
@@ -128,6 +191,8 @@ article {
 -->
 <br>
 <% if current_user.premium? %>
-<%= link_to 'New Company', new_company_path %>
+  <% unless Company.exists? %>
+    <%= link_to 'New Company', new_company_path %>
+  <% end %>
 <% end %>
 </div>
