@@ -1,5 +1,5 @@
+<% if a.trackable %>
 <div id="jobbox" style="background-color:#F0F8FF; margin-bottom: 15px;">
-  <% if a.trackable %>
     <h2 style="background-color: #F0F8FF;">
       <%= link_to a.trackable.company, job_path(a.trackable) %></h2>
 <div id="jobtitle" style="background-color: white;">
@@ -27,8 +27,8 @@ function myFunction() {
 </script>
 </div>
 <% else %>
-  <% end %>
 
 </div>
 
 </div>
+<% end %>

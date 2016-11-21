@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :friendships
   get 'resumes/index'
 
   get 'resumes/new'

@@ -1,2 +1,2 @@
 
-  <%= render_activities @activities %>
+  <%= render_activities @activities, locals: {user: current_user} %>
