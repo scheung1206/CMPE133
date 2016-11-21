@@ -2,9 +2,16 @@
 
 <% @conversation.receipts_for(current_user).each do |receipt| %>
 	<div>
-		<div><%= receipt.message.sender.first_name %> sent you a message: </div>
+		<div id="jobbox" style="background-color:#F0F8FF; margin-bottom: 15px;">
+		    <h5 style="background-color: #F0F8FF;">
+		<% unless receipt.message.sender.profile.avatar_url.nil? %>
+	 <img src="<%=receipt.message.sender.profile.avatar_url(:thumbnail)%>">
+			 <% else %>
+				 <img src="/assets/defaultprofile" height=50px width=50px>
+			 <% end %>
+		<span><%= receipt.message.sender.first_name %> sent you a message: </span></h5>
 		<p><%= receipt.message.body %> </p>
-
+</div>
 	</div>
 	<% end %>
 
@@ -15,4 +22,3 @@
 
 	<%= submit_tag "Send messages" %>
 	<% end %>
-

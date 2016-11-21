@@ -2,18 +2,23 @@
 
 <h2>Following</h2>
 <ul>
-  <% for friendship in @user.friendships %>
-    <li>
-      <%= friendship.friend.first_name %>
-      (<%= link_to "remove", friendship, :method => :delete %>)
-    </li>
-  <% end %>
-</ul>
-<br>
-
-<h2>Followed by</h2>
-<ul>
-  <% for user in @user.inverse_friends %>
-    <li><%= h user.first_name %></li>
-  <% end %>
+  <div class="row">
+    <% for friendship in @user.friendships %>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <% unless friendship.friend.profile.avatar_url.nil? %>
+         <img src="<%=friendship.friend.profile.avatar_url(:card)%>">
+             <% else %>
+               <img src="/assets/defaultprofile" height=150px width=150px>
+             <% end %>
+          <div class="caption">
+            <h3><%=friendship.friend.first_name + " " + friendship.friend.last_name%></h3>
+            <p><%=friendship.friend.bio%></p>
+            <p><a href="<%=user_path(friendship.friend)%>" class="btn btn-primary" role="button">Profile</a></p>
+            <%= link_to "Unfollow", friendship, :method => :delete %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+  </div>
 </ul>
