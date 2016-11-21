@@ -2,7 +2,8 @@
   <p><%= link_to 'Search Jobs', new_search_path %> </p>
   <% if current_user.premium %>
   <h1 align="center">Your Jobs</h1>
-    <%= button_to "New Job", new_job_path, :method => :get %>
+
+<%= link_to "Advanced Search", new_search_path %>
   <br>
 
   <% @activities.each do |a| %>

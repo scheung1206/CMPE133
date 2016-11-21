@@ -190,9 +190,12 @@ article {
 </table>
 -->
 <br>
-<% if current_user.premium? %>
-  <% unless Company.exists? %>
-    <%= link_to 'New Company', new_company_path %>
-  <% end %>
+<% if current_user.premium? && Company.exists? %>
+
 <% end %>
+<% if current_user.premium? && !Company.exists?%>
+<%= link_to 'New Company', new_company_path %>
+  <%end%>
+
+
 </div>
