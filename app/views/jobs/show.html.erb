@@ -10,6 +10,7 @@
       <th>Candidate Name</th>
       <th>Occupation</th>
       <th>Resume</th>
+      <th> </th>
 
       <th colspan="3"></th>
     </tr>
@@ -21,7 +22,19 @@
         <td><%= user.first_name + " " + user.last_name %></td>
         <td><%= user.profile.occupation %></td>
 
-        <td><%= link_to 'Show', user.profile.resume %></td>
+        <td><%= user.profile.resume %></td>
+
+        <td><button type="button" class="btn btn-link"
+        value = "voters" onclick="myFunction(this)">Skip</button>
+        <script>
+        function myFunction(e) {
+
+          $(e).closest('tr').remove();
+            //document.getElementById("jobbox").style.display='none';
+        }
+        </script>
+
+        </td>
       </tr>
     <% end %>
   </tbody>
