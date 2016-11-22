@@ -1,9 +1,9 @@
 <div class="col-sm-6 col-md-offset-3">
   <p><%= link_to 'Search Jobs', new_search_path %> </p>
-  <% if current_user.premium %>
+ <% if current_user.premium?  %>
   <h1 align="center">Your Jobs</h1>
-
-<%= link_to "Advanced Search", new_search_path %>
+  <p><%= link_to 'Search Jobs', new_search_path %> </p>
+  <%= link_to "New Job", new_job_path, :method => :get %>
   <br>
 
   <% @activities.each do |a| %>
