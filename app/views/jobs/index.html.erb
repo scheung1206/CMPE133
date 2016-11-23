@@ -1,17 +1,18 @@
 <div class="col-sm-6 col-md-offset-3">
-  <p><%= link_to 'Search Jobs', new_search_path %> </p>
- <% if current_user.premium?  %>
+ <% if current_user.premium  %>
   <h1 align="center">Your Jobs</h1>
-  <p><%= link_to 'Search Jobs', new_search_path %> </p>
   <%= link_to "New Job", new_job_path, :method => :get %>
+  <p><%= link_to 'Search Jobs', new_search_path %> </p>
   <br>
-
-  <% @activities.each do |a| %>
+  <% @user = current_user %>
+  <% @user.jobs.each do |a| %>
   <div id="jobbox" style="background-color:#F0F8FF; margin-bottom: 15px;">
-    <h2 style="background-color: #F0F8FF;"><%= link_to a.company, job_path(a) %></h2>
+    <h2 style="background-color: #F0F8FF;">
+      <%= link_to a.company, job_path(a) %></h2>
     <div id="jobtitle" style="background-color: white;">
       <h6> Job Title </h6>
-      <h4 style="border: solid 1px; height: 50px" ><%= a.title %>
+      <h4 style="border: solid 1px; height: 50px" >
+        <%= a.title %>
       </h4>
       <h6> Description </h6>
       <div style="border: solid 1px; height: 80px">
@@ -25,15 +26,20 @@
       </div>
       </div>
       <%end %>
-      <% end %></div>
-      <% if !current_user.premium %>
-      <h1 align="center">Voted Jobs</h1>
+      <% end %>
+    </div>
+
+<% if !current_user.premium %>
+  <h1 align="center" >Voted Jobs</h1>
+      <p><%= link_to 'Search Jobs', new_search_path %> </p>
       <% @user.find_voted_items.each do |a| %>
       <div id="jobbox" style="background-color:#F0F8FF; margin-bottom: 15px;">
-        <h2 style="background-color: #F0F8FF;"><%= link_to a.company, job_path(a) %></h2>
+        <h2 style="background-color: #F0F8FF;">
+          <%= link_to a.company, job_path(a) %></h2>
         <div id="jobtitle" style="background-color: white;">
           <h6> Job Title </h6>
-          <h4 style="border: solid 1px; height: 50px" ><%= a.title %>
+          <h4 style="border: solid 1px; height: 50px" >
+            <%= a.title %>
           </h4>
           <h6> Description </h6>
           <div style="border: solid 1px; height: 80px">

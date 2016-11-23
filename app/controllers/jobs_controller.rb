@@ -6,7 +6,11 @@ class JobsController < ApplicationController
   # GET /jobs.json
   def index
     @jobs = Job.where(["name LIKE ?","%#{params[:search]}%"])
-    @activities = Job.all.order('created_at DESC')#PublicActivity::Activity.order('created_at DESC')
+    @activities = Job.all.order('created_at DESC')
+    #PublicActivity::Activity.order('created_at DESC')
+    @user = current_user
+    #@jobs = @user.jobs
+
 
   end
 
@@ -28,7 +32,7 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = Job.new(job_params)
-
+    @job.user_id = current_user.id
     respond_to do |format|
       if @job.save
         format.html { redirect_to jobs_url }

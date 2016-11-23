@@ -1,3 +1,4 @@
+
 <% if @current_user.premium && a.trackable %>
 <div id="jobbox" style="background-color:#F0F8FF; margin-bottom: 15px;">
   <h2 style="background-color: #F0F8FF;">
@@ -28,8 +29,13 @@ function myFunction() {
     //document.getElementById("jobbox").style.display='none';
 }
 </script>
+</div>
+</div>
 <%end%>
-<% if @current_user && !@current_user.premium && a.trackable %>
+
+
+
+<% if !@current_user.premium && a.trackable %>
 <div id="jobbox" style="background-color:#F0F8FF; margin-bottom: 15px;">
   <h2 style="background-color: #F0F8FF;color:blue;font-size:30px">
     <%= a.trackable.company %>

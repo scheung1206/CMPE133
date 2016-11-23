@@ -15,6 +15,7 @@ Rails.application.routes.draw do
           put 'like', to: "jobs#upvote"
           get 'like'
     end
+
 end
 
   resources :conversations do
@@ -32,9 +33,9 @@ end
    get 'users/:id/edit', to: "users#edit", as: "edit_user"
   patch 'users/:id', to: "users#update"
 
-  
+
    resources :resumes, only: [:index, :new, :create, :destroy]
-   
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
