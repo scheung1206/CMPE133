@@ -7,7 +7,7 @@
       <%= image_tag User.find(a.trackable.user_id).profile.avatar_url(:thumbnail) %>
       <%= User.find(a.trackable.user_id).first_name + " " + User.find(a.trackable.user_id).last_name %></h5>
 <div id="jobtitle" style="background-color: white;">
-  <h4><%= link_to a.trackable.status, post_path(a.trackable) %></h4>
+  <h3><%= link_to a.trackable.status, post_path(a.trackable) %></h3>
   <br>
   <br>
   Posted <%= time_ago_in_words(a.created_at) %> ago
