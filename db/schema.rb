@@ -30,8 +30,14 @@ ActiveRecord::Schema.define(version: 20161128005625) do
   add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
   add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
 
-# Could not dump table "companies" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  create_table "companies", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "avatar"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+  end
 
   create_table "finds", force: :cascade do |t|
     t.string   "first_name"

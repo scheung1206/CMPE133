@@ -5,13 +5,13 @@
   <div class="row">
     <% for friendship in @user.friendships %>
       <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
+        <div class="thumbnail" style="background-color:#F0F8FF;">
           <% unless friendship.friend.profile.avatar_url.nil? %>
          <img src="<%=friendship.friend.profile.avatar_url(:card)%>">
              <% else %>
                <img src="/assets/defaultprofile" height=150px width=150px>
              <% end %>
-          <div class="caption">
+          <div class="caption" style="background-color:white;">
             <h3><%=friendship.friend.first_name + " " + friendship.friend.last_name%></h3>
             <p><%=friendship.friend.bio%></p>
             <p><a href="<%=user_path(friendship.friend)%>" class="btn btn-primary" role="button">Profile</a></p>

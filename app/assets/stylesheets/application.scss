@@ -113,7 +113,6 @@ div.form-actions {
  width: 25%;
 }
 
-
 img.company.logo {
  width: 750px;
 }
@@ -149,9 +148,9 @@ textarea {
    width: 75%;
    height: 125px;
 }
-/*****/
-/* END TEXT AREA
-/*****/
+/*********************/
+/* END TEXT AREA     */
+/*********************/
 
 /*****/
 /* POST - HOME
@@ -227,6 +226,7 @@ input#post_button.btn:hover {
 .dropbtn:active {
  position:relative;
  top:1px;
+ z-index: 1;
 }
 
 .dropdwn {
