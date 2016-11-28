@@ -1,0 +1,40 @@
+<div class="col-sm-6 col-md-offset-3">
+  <h1 align="center">All Jobs</h1>
+  <% if current_user.premium %>
+  <p><%= link_to 'My Jobs', jobs_path %> </p>
+    <%= link_to "New Job", new_job_path, :method => :get %>
+  <% else %>
+  <p><%= link_to 'Liked Jobs', jobs_path %> </p>
+  <% end %>
+  <p><%= link_to 'Search Jobs', new_search_path %> </p>
+  <br>
+<% @jobs.each do |a| %>
+<div id="jobbox" style="background-color:#F0F8FF; margin-bottom: 15px;">
+  <h2 style="background-color: #F0F8FF;">
+    <%= a.company%></h2>
+  <div id="jobtitle" style="background-color: white;">
+    <h6> Job Title </h6>
+    <div style="border: solid 1px; height: 50px" >
+      <%= a.title %>
+    </div>
+    <h6> Description </h6>
+    <div style="border: solid 1px; height: 80px">
+      <%= a.description %>
+    </div>
+    <%= link_to like_job_path(a), method: :put do%>
+    Upvote
+    <%= a.get_upvotes.size %>
+
+    <% end %>
+    <button type="button" class="btn btn-link"
+    id = "jobbox" onclick="myFunction()">Skip</button>
+    <script>
+    function myFunction() {
+      $('#jobbox').remove();
+        //document.getElementById("jobbox").style.display='none';
+    }
+    </script>
+    </div>
+    </div>
+    <%end %>
+  </div>

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   get 'resumes/destroy'
 
+  get 'jobs/indexall'
+
   resources :posts
   resources :companies
   resources :jobs do
