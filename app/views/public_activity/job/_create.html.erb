@@ -37,16 +37,16 @@ function myFunction() {
 
 <% if !@current_user.premium && a.trackable %>
 <div id="jobbox" style="background-color:#F0F8FF; margin-bottom: 15px;">
-  <h2 style="background-color: #F0F8FF;color:blue;font-size:30px">
+  <h2 style="background-color: #F0F8FF;font-size:30px">
     <%= a.trackable.company %>
     </h2>
 
 <div id="jobtitle" style="background-color: white;color: rose pink;">
-  <h6 style="color:red;font-size:15px"> Job Title </h6>
-    <h4 style="border: solid 1px; height: 50px" >
+  <h6 style="font-size:15px"> Job Title </h6>
+    <div style="border: solid 1px; height: 50px" >
       <%= a.trackable.title %>
-    </h4>
-    <h6 style="color:red;font-size:15px"> Description </h6>
+    </div>
+    <h6 style="font-size:15px"> Description </h6>
     <div style="border: solid 1px; height: 80px">
       <%= a.trackable.description %>
     </div>
