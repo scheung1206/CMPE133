@@ -3,9 +3,9 @@
         <h2 align="center">Updating <%=@user.first_name%></h2>
         <%= form_for(@user) do |f| %>
             <div class="form-group">
-                <textarea name="user[bio]" class="form-control" placeholder="Bio"><%=@user.bio%></textarea>
+                <textarea name="user[bio]" class="update_text_area" placeholder="Bio"><%=@user.bio%></textarea>
             </div>
-            <input type="submit" value="Submit" class="btn btn-primary"/>
+            <input type="submit" value="Update bio" class="btn btn-info"/>
         <% end %>
     </div>
 </div>
