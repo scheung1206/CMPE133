@@ -78,15 +78,6 @@ article {
 <!--
 <div class="search">
 -->
-  <%= form_tag companies_path, :method=> 'get' do %>
-  <p>
-  <%= text_field_tag :search, params[:search] %>
-  </p>
-  <p>
-  <%= submit_tag "Search", :name => nil %>
-  </p>
-  <!-- </div> -->
-  <% end %>
 
 <!--
 <div class="adv">
@@ -99,10 +90,11 @@ article {
 <% end %>
 -->
 
-<%= link_to "Advanced Search", new_search_path %>
 
 <!--<h1>Company</h1> -->
-
+<% if current_user.premium? && !(current_user.company)%>
+<%= link_to 'New Company', new_company_path %>
+  <%end%>
 <table style="width:100%; border-collapse: separate; border-spacing: 0px 10px">
   <% @companies.each do |company| %>
     <tr>
@@ -110,7 +102,9 @@ article {
         <div class="bluebox">
         <div style="width:90%; height:250px; background-color: #d0e3ed; margin-left:5%; ">
           <header style="padding:1em; color:black; clear:left; text-align:center;">
+            <a href="companies/<%=company.id%>">
             <h1><%= company.name %></h1>
+          </a>
           </header>
           <div>
             <% unless company.avatar_url.nil? %>
@@ -123,7 +117,9 @@ article {
               </div>
               <% end %>
               <div style="margin-left:10%;">
-                <%= link_to 'Edit Profile', edit_company_path(company) %>
+                <% if company.user_id == current_user.id %>
+                <%= link_to 'Edit Company', edit_company_path(company) %>
+                <% end %>
               </div>
           </div>
         </div>
@@ -170,12 +166,7 @@ article {
 </table>
 -->
 <br>
-<% if current_user.premium? && Company.exists? %>
 
-<% end %>
-<% if current_user.premium? && !Company.exists?%>
-<%= link_to 'New Company', new_company_path %>
-  <%end%>
 
 
 </div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123081407) do
+ActiveRecord::Schema.define(version: 20161128005625) do
 
   create_table "activities", force: :cascade do |t|
     t.integer  "trackable_id"
@@ -30,13 +30,8 @@ ActiveRecord::Schema.define(version: 20161123081407) do
   add_index "activities", ["recipient_id", "recipient_type"], name: "index_activities_on_recipient_id_and_recipient_type"
   add_index "activities", ["trackable_id", "trackable_type"], name: "index_activities_on_trackable_id_and_trackable_type"
 
-  create_table "companies", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.string   "avatar"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
+# Could not dump table "companies" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "finds", force: :cascade do |t|
     t.string   "first_name"
