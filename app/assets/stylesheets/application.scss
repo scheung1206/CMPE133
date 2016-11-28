@@ -147,8 +147,34 @@ textarea {
    width: 75%;
    height: 125px;
 }
-/*****
+/*****/
 /* END TEXT AREA
+/*****/
+
+/*****/
+/* POST - HOME
+/*****/
+
+div.form-group.string.optional.post_status {
+   margin-bottom:0px;
+}
+
+input#post_button.btn {
+   position: absolute;
+   right: 40px;
+   top: 12px;
+   padding-right: 10px;
+   padding-left: 10px;
+   border-right-width: 1px;
+   width: 125px;
+   color: black;
+   background-color: white;
+   border: 2px solid #555555;
+   transition-duration: 0.5s;
+}
+
+/*****
+/* END POST - HOME
 /*****
 
 /******************/
