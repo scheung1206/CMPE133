@@ -12,7 +12,7 @@
       <h3 class="user-name"><%= current_user.first_name + " " + current_user.last_name%></h3>
       <p><%= current_user.profile.occupation%></p>
       <p><%= current_user.profile.education%></p>
-      <p><%= link_to 'Edit Profile', edit_profile_path(current_user.profile) %></p>
+      <p><%= link_to 'Profile', user_path(current_user.id) %></p>
     </div>
 
   </div>

@@ -5,6 +5,12 @@
     <div class="row" >
 
         <div class="col-md-8 col-md-offset-2" style="background-color: #F0F8FF">
+          <% if current_user.id == @user.id %>
+           <% if !flash[:notice].blank? %>
+            <div>
+               <%= flash[:notice] %>
+            </div>
+          <% end %>
         <div class="col-md-3">
         <% unless @user.profile.avatar_url.nil? %>
          <img src="<%=@user.profile.avatar_url(:card)%>">
@@ -39,16 +45,10 @@
             <h3> Skills</h3>
             <p><%=@user.profile.skill%></p>
             <h3> Resume </h3>
-            <% if current_user.id == @user.id %>
-             <% if !flash[:notice].blank? %>
-              <div class = "alert alert-info">
-                 <%= flash[:notice] %>
-              </div>
-            <% end %>
 
              <br />
 
-            <%= link_to "New Resume", new_resume_path, class: "btn btn-primary" %>
+            <%= link_to "New Resume", new_resume_path, class: "btn btn-info" %>
             <br />
             <br />
             <%end%>
