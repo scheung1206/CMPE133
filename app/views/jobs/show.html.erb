@@ -20,11 +20,19 @@
     <% @job.votes_for.up.by_type(User).voters.each do |user| %>
       <tr>
         <td><%= user.first_name + " " + user.last_name %></td>
-        <td><%= user.profile.occupation %></td>
+        <td>
+          <% if user.profile.occupation %>
+          <%= user.profile.occupation %>
+        <%else%>
+        Not Available
+        <% end %>
+      </td>
         <td>
           <% if user.resumes.first %>
           <%= link_to "Download Resume", user.resumes.first.attachment_url %>
-        <% end%>
+        <% else%>
+        Not Available
+        <% end %>
       </td>
 
         <td><button type="button" class="btn btn-link"style="margin-right:-30px"
@@ -39,8 +47,7 @@
 
         </td>
         <td>
-          <%= link_to "Message".html_safe,
-          new_conversation_path  %>
+          <%= link_to "Message".html_safe, new_conversation_path(:user => user)  %>
         </td>
       </tr>
     <% end %>

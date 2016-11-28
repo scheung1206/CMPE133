@@ -111,7 +111,11 @@ article {
 <% @jobs.each do |a| %>
 <div id="jobbox" style="background-color:#F0F8FF; margin-bottom: 15px;">
   <h2 style="background-color: #F0F8FF;">
+    <% if current_user.id == a.user_id %>
     <%= link_to a.company, job_path(a) %></h2>
+    <% else %>
+    <%= a.company %>
+    <% end %>
   <div id="jobtitle" style="background-color: white;">
     <h6> Job Title </h6>
     <div style="border: solid 1px; height: 50px" >

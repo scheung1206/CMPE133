@@ -14,7 +14,7 @@
           <div class="caption" style="background-color:white;">
             <h3><%=friendship.friend.first_name + " " + friendship.friend.last_name%></h3>
             <p><%=friendship.friend.bio%></p>
-            <p><a href="<%=user_path(friendship.friend)%>" class="btn btn-primary" role="button">Profile</a></p>
+            <p><a href="<%=user_path(friendship.friend)%>" class="btn btn-info" role="button">Profile</a></p>
             <%= link_to "Unfollow", friendship, :method => :delete %>
           </div>
         </div>
