@@ -1,12 +1,13 @@
 <div class="row">
     <div class="col-md-6 col-md-offset-3 col-sm-12">
-        <h2 align="center">Updating <%=@user.first_name%></h2>
+        <h2 align="center">Updating <%=@user.first_name%>'s Bio</h2>
         <%= form_for(@user) do |f| %>
             <div class="form-group">
                 <textarea name="user[bio]" class="update_text_area" placeholder="Bio"><%=@user.bio%></textarea>
             </div>
+
             <input type="submit" value="Update bio" class="btn btn-info"/>
+
         <% end %>
     </div>
 </div>
-
