@@ -15,6 +15,33 @@
   <% unless @company.avatar_url.nil? %><%= image_tag @company.avatar_url(:display) %><br /><% end %>
 </p>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+<% if current_user.id == @company.user_id %>
+<%= link_to 'Edit', edit_company_path(@company) %>
+<% end %>
+</div>
+
+<br>
+<div class="col-sm-6 col-md-offset-3">
+<h2> All Jobs </h2>
+<% @jobs.each do |a| %>
+<div id="jobbox" style="background-color:#F0F8FF; margin-bottom: 15px;">
+  <h2 style="background-color: #F0F8FF;">
+    <%= link_to a.company, job_path(a) %></h2>
+  <div id="jobtitle" style="background-color: white;">
+    <h6> Job Title </h6>
+    <div style="border: solid 1px; height: 50px" >
+      <%= a.title %>
+    </div>
+    <h6> Description </h6>
+    <div style="border: solid 1px; height: 80px">
+      <%= a.description %>
+    </div>
+    <%= link_to like_job_path(a), method: :put do%>
+    Upvote
+    <%= a.get_upvotes.size %>
+
+    <% end %>
+    </div>
+    </div>
+    <%end %>
 </div>

@@ -21,8 +21,7 @@
       <tr>
         <td><%= user.first_name + " " + user.last_name %></td>
         <td><%= user.profile.occupation %></td>
-
-        <td><%= user.profile.resume %></td>
+        <td><%= link_to "Download Resume", user.resumes.first.attachment_url %></td>
 
         <td><button type="button" class="btn btn-link"style="margin-right:-30px"
         value = "voters" onclick="myFunction(this)">Skip</button>

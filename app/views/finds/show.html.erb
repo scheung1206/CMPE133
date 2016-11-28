@@ -10,13 +10,26 @@
 
 	<% @find.find_names.each do |c| %>
 	<br>
-<a href="/profiles/<%=c.id%>">
-	<div class ="div">
-		<h2> <%= c.first_name %> </h2>
-		<h4><%= c.last_name %> </h4>
-
+	<div class="col-sm-6 col-md-4">
+		<div class="thumbnail" style="background-color:#F0F8FF;">
+			 <% unless c.profile.avatar_url.nil? %>
+			<img src="<%=c.profile.avatar_url(:card)%>">
+					<% else %>
+						<img src="/assets/defaultprofile" height=150px width=150px>
+					<% end %>
+			<div class="caption" style="background-color:white;">
+				<h3><%=c.first_name + " " + c.last_name%></h3>
+				<p><%=c.bio%></p>
+				<div style="height:30px;">
+			<small>	<%= if
+	current_user.friendships.where(:friend_id => c.id).where(:user_id => current_user.id).empty? and !(c == current_user)
+	link_to "Add Friend", friendships_path(:friend_id => c.id), :method => :post
+end %>
+</div></small>
+				<p><br><a href="<%=user_path(c)%>" class="btn btn-primary" role="button">View Profile</a></p>
+			</div>
+		</div>
 	</div>
-</a>
 	<% end %>
 
 	<% end %>
