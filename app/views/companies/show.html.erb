@@ -1,20 +1,132 @@
+<head>
+<style>
+div.company {
+    width: 70%;
+    height: 200px;
+    background-color: #d0e3ed;
+    margin-left: 15%;
+}
+
+
+
+article {
+    margin-left: 20%;
+    padding: 1em;
+    overflow: hidden;
+    text-align: left;
+
+}
+
+.round {
+   /*max-width: 200px;*/
+   /*max-height: 200px;*/
+   border-radius: 50%;
+   position: center;
+   margin-left: 40px;
+   margin-top: -75px;
+}
+
+.round img {
+  display: block;
+  /* make a square container */
+  min-width: 200px;
+  min-height: 200px;
+  /* fill the container, preserving aspect ratio, and cropping to fit */
+  background-size: cover;
+  /* center the image vertically and horizontally */
+  background-position: center;
+  /* round the edges to a circle with border radius 1/2 container size */
+  border-radius: 50%;
+  /*border*/
+  border:1px solid gray;
+}
+
+.adv {
+  float: right;
+  margin-right:245px;
+  margin-top:15px;
+  overflow:hidden;
+}
+
+.search {
+  position: absolute;
+  float: left;
+  margin-left: 165px;
+  width: 50%;
+  overflow:hidden;
+}
+
+.bluebox {
+  margin-top:40px;
+}
+
+.description {
+  position: absolute;
+  margin-left: 120px;
+  margin-right:300px;
+  float: right;
+  margin-top:-150px;
+  font-size: 16px;
+  left:25%;
+}
+
+</style>
+</head>
 <p id="notice"><%= notice %></p>
-<div style="background-color: white;">
-<p>
-  <strong>Name:</strong>
-  <%= @company.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @company.description %>
-</p>
+    <div class="bluebox">
+    <div style="width:90%; height:250px; background-color: #d0e3ed; margin-left:5%; ">
+      <header style="padding:1em; color:black; clear:left; text-align:center;">
+        <a href="companies/<%=@company.id%>">
+        <h1><%= @company.name %></h1>
+      </a>
+      </header>
+    <div class="col-md-2">
+        <% unless @company.avatar_url.nil? %>
+          <div class="round">
+            <%= image_tag(@company.avatar_url(:profile), size:"200") %>
+          </div>
+          <% else %>
+          <div class="round">
+            <img src="/assets/defaultcompany">
+          </div>
+          <% end %>
+          <div style="margin-left:10%;">
+            <% if @company.user_id == current_user.id %>
+            <%= link_to 'Edit Company', edit_company_path(@company) %>
+            <% end %>
+          </div>
+      </div>
+    </div>
+    <div class="description">
+        <%= @company.description %>
+      </div>
+    </div>
 
-<p>
-  <strong>Avatar:</strong>
-  <% unless @company.avatar_url.nil? %><%= image_tag @company.avatar_url(:display) %><br /><% end %>
-</p>
+</div>
 
-<%= link_to 'Edit', edit_company_path(@company) %> |
-<%= link_to 'Back', companies_path %>
+<br>
+<div class="col-sm-6 col-md-offset-3">
+<h2> All Jobs </h2>
+<% @jobs.each do |a| %>
+<div id="jobbox" style="background-color:#F0F8FF; margin-bottom: 15px;">
+  <h2 style="background-color: #F0F8FF;">
+    <%= link_to a.company, job_path(a) %></h2>
+  <div id="jobtitle" style="background-color: white;">
+    <h6> Job Title </h6>
+    <div style="border: solid 1px; height: 50px" >
+      <%= a.title %>
+    </div>
+    <h6> Description </h6>
+    <div style="border: solid 1px; height: 80px">
+      <%= a.description %>
+    </div>
+    <%= link_to like_job_path(a), method: :put do%>
+    Upvote
+    <%= a.get_upvotes.size %>
+
+    <% end %>
+    </div>
+    </div>
+    <%end %>
 </div>

@@ -1,14 +1,38 @@
+<head>
+<style>
+
+label.search_first_name {
+	position: relative;
+	left: 215px;
+	top: 15px;
+}
+
+label.search_last_name {
+	position: relative;
+	left: 215px;
+}
+
+input#find_first_name {
+	position: relative;
+}
+
+input#find_last_name {
+	position: relative;
+	left: 0px;
+}
+
+</style>
+</head>
+
 <h1> Advanced Search </h1>
 
 <%= form_for @find do |f| %>
 		<div class = "field">
-			<%= f.label :first_name %><br />
-			<%= f.text_field :first_name %>
+			<%= f.text_field :first_name, :placeholder => 'First name'%>
 		</div>
 
 		<div class = "field">
-			<%= f.label :last_name %>
-			<%= f.text_field :last_name %>
+			<%= f.text_field :last_name, :placeholder => 'Last name' %>
 		</div>
 
 		<div class = "action"><%= f.submit "Find" %></div>

@@ -1,3 +1,14 @@
+<head>
+<style>
+
+input.btn.btn-default.update_button {
+  position: relative;
+  left: 0px;
+}
+
+</head>
+</style>
+
 <!-- EDIT USER -->
 <div style="background-color: white;">
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
@@ -26,7 +37,7 @@
   </div>
 
   <div class="update_account">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, "Update" , :class => 'update_button' %>
   </div>
 <% end %>
 

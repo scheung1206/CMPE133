@@ -2,18 +2,15 @@
 
 <%= form_for @search do |f| %>
 		<div class = "field">
-			<%= f.label :company %><br />
-			<%= f.text_field :company %>
+			<%= f.text_field :company, :placeholder => 'Company name' %>
 		</div>
 
 		<div class = "field">
-			<%= f.label :title %>
-			<%= f.text_field :title %>
+			<%= f.text_field :title, :placeholder => 'Job title'%>
 		</div>
 
 		<div class = "field">
-			<%= f.label :description %>
-			<%= f.text_field :description %>
+			<%= f.text_field :description, :placeholder => 'Job description' %>
 		</div>
 
 		<div class = "action"><%= f.submit "Search" %></div>
