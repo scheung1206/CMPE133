@@ -10,6 +10,8 @@ class CompaniesController < ApplicationController
   # GET /companies/1
   # GET /companies/1.json
   def show
+    @company = Company.find(params[:id])
+    @jobs = User.find(@company.user_id).jobs.all
   end
 
   # GET /companies/new

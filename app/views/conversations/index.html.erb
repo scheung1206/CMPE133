@@ -1,12 +1,11 @@
+<div class="col-sm-6 col-md-offset-3">
 <h1>All Conversation </h1>
 
 	<% @conversations.each do |conversation| %>
-	<div>
-		<%= link_to conversation.subject, conversation_path(conversation) %>
+	<div style="background-color:#F0F8FF;">
+	<h3 style="background-color:white;">	<%= link_to conversation.subject, conversation_path(conversation) %></h3>
+	<%= time_ago_in_words(conversation.created_at) %> ago
+
 	</div>
-
-
-
-<% end %>
-
-<%= link_to "New Conversation", new_conversation_path %>
+<br><% end %>
+</div>

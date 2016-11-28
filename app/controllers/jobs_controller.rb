@@ -14,6 +14,10 @@ class JobsController < ApplicationController
 
   end
 
+  def indexall
+    @jobs = Job.all.order('created_at DESC')
+  end
+
   # GET /jobs/1
   # GET /jobs/1.json
   def show

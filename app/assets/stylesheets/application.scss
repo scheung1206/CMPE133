@@ -33,8 +33,8 @@ h4 {
 }
 
 div.nav {
- position: relative;
- z-index: 1;
+  position: relative;
+  z-index: 1;
  background:white;
  height:55px;
  border-width: 3px;
@@ -149,7 +149,7 @@ textarea {
    height: 125px;
 }
 /*********************/
-/* END TEXT AREA     */ 
+/* END TEXT AREA     */
 /*********************/
 
 /*****/
@@ -283,6 +283,7 @@ input#find_last_name
 
 
 .dropdown:hover .dropdown-content {
+
    display: block;
 }
 

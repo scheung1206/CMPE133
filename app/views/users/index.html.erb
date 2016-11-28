@@ -1,23 +1,28 @@
+<div class="container">
 <%= link_to "Search Person", new_find_path %>
 <div class="row">
   <% @users.each do |user| %>
     <div class="col-sm-6 col-md-4">
-      <div class="thumbnail">
+      <div class="thumbnail" style="background-color:#F0F8FF;">
          <% unless user.profile.avatar_url.nil? %>
         <img src="<%=user.profile.avatar_url(:card)%>">
             <% else %>
               <img src="/assets/defaultprofile" height=150px width=150px>
             <% end %>
-        <div class="caption">
+        <div class="caption" style="background-color:white;">
           <h3><%=user.first_name + " " + user.last_name%></h3>
           <p><%=user.bio%></p>
+          <div style="height:30px;">
           <%= if
     current_user.friendships.where(:friend_id => user.id).where(:user_id => current_user.id).empty? and !(user == current_user)
     link_to "Add Friend", friendships_path(:friend_id => user.id), :method => :post
  end %>
-          <p><a href="<%=user_path(user)%>" class="btn btn-primary" role="button">View Profile</a></p>
+ </div>
+          <p><a href="<%=user_path(user)%>" class="btn btn-info" role="button">View Profile</a></p>
         </div>
       </div>
     </div>
+
   <% end %>
+</div>
 </div>

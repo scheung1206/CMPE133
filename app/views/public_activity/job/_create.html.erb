@@ -2,7 +2,11 @@
 <% if @current_user.premium && a.trackable %>
 <div id="jobbox" style="background-color:#F0F8FF; margin-bottom: 15px;">
   <h2 style="background-color: #F0F8FF;">
+    <% if a.trackable.user_id == @current_user.id %>
     <%= link_to a.trackable.company, job_path(a.trackable) %>
+    <% else %>
+    <%= a.trackable.company %>
+    <% end %>
     </h2>
 
 <div id="jobtitle" style="background-color: white;">
@@ -18,7 +22,7 @@
 <div>
 <%= link_to like_job_path(a.trackable),
    method: :put do%>
-   Upvote
+   Like
    <%= a.trackable.get_upvotes.size %>
 <% end %>
 <button type="button" class="btn btn-link"

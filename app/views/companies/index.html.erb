@@ -93,6 +93,7 @@ article {
 
 
 <!--<h1>Company</h1> -->
+<h3> Listing Companies </h3>
 <% if current_user.premium? && !(current_user.company)%>
 <%= link_to 'New Company', new_company_path %>
   <%end%>

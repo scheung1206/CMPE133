@@ -1,6 +1,6 @@
 class ConversationsController < ApplicationController
 	def index
-		@conversations = current_user.mailbox.conversations
+		@conversations = current_user.mailbox.conversations.order('created_at DESC')
 	end
 
 	def show
@@ -8,7 +8,7 @@ class ConversationsController < ApplicationController
 	end
 
 	def new
-		@recipients = User.all - [current_user]
+		@recipients = [User.find(params[:user])]
 	end
 
 	def create
