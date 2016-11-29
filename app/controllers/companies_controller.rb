@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
   def index
-    @companies = Company.all
+    @companies = Company.all.order('created_at DESC')
   end
 
   # GET /companies/1

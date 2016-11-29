@@ -2,10 +2,11 @@
  <% if current_user.premium  %>
   <h1 align="center">Your Jobs</h1>
   <p><%= link_to 'All Jobs', jobs_indexall_path %> </p>
+  <%= link_to "New Job", new_job_path, :method => :get %>
   <p><%= link_to 'Search Jobs', new_search_path %> </p>
   <br>
   <% @user = current_user %>
-  <% @user.jobs.each do |a| %>
+  <% @user.jobs.order('created_at DESC').each do |a| %>
   <div id="jobbox" style="background-color:#F0F8FF; margin-bottom: 15px;">
     <h2 style="background-color: #F0F8FF;">
       <%= link_to a.company, job_path(a) %></h2>
@@ -19,7 +20,7 @@
         <%= a.description %>
       </div>
       <%= link_to like_job_path(a), method: :put do%>
-      Upvote
+      Liked
       <%= a.get_upvotes.size %>
 
       <% end %>
@@ -47,7 +48,7 @@
             <%= a.description %>
           </div>
           <%= link_to like_job_path(a), method: :put do%>
-          Upvote
+          Liked
           <%= a.get_upvotes.size %>
 
           <% end %>
