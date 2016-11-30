@@ -24,8 +24,15 @@
 		      <h5><%= a.description %></h5>
 		    </div>
 		    <%= link_to like_job_path(a), method: :put do%>
-		    <h5>Upvote
-		    <%= a.get_upvotes.size %></h5>
+		    <h5>Like
+		    <%= a.get_upvotes.size %><button type="button" class="btn btn-link"
+				id = "jobbox" onclick="myFunction()">Skip</button>
+				<script>
+				function myFunction() {
+				  $('#jobbox').remove();
+				    //document.getElementById("jobbox").style.display='none';
+				}
+				</script></h5>
 
 		    <% end %>
 		    </div>
